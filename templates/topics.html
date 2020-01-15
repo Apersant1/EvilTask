@@ -6,10 +6,12 @@
 
 <ul>
     {% for topic in topics %}
-        <li>{{ topic }}</li>
-    {% empty %}
-    {% endfor %}
+        <a href="{% url 'Main:topic' topic.id %}">{{ topic }}</a>
 
+    {% empty %}
+        <li>Dont have topics yet</li>
+    {% endfor %}
+    <a href="{% url 'Main:new_topic' %}">Add new topic</a>
 </ul>
 
 {% endblock %}
