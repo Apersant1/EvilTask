@@ -2,6 +2,7 @@
 
 {% block content %}
 
+
     <p>Topic: {{ topic }}</p>
 
     <P>Entries: </P>
@@ -15,7 +16,10 @@
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <p>{{ entry.text|linebreaks }}</p>
-      <footer class="blockquote-footer">Опубликовано: {{ entry.data_added|date:'M d, Y H:i'}}</footer>
+      <footer class="blockquote-footer">Опубликовано: {{ entry.data_added|date:'M d, Y h:i:s'}}</footer>
+      <p>
+          <a href="{% url 'Main:edit_entry' entry.id %}">Edit</a>
+      </p>
     </blockquote>
   </div>
 </div>
@@ -23,5 +27,5 @@
             <li>There are no entries for this topic yet.</li>
 
     {% endfor %}
-
+    <a href="{% url 'Main:create_entry' topic.id %}">Add new entry</a>
 {% endblock %}
