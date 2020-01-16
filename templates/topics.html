@@ -5,21 +5,17 @@
 <p>Topics:</p>
 
     {% for topic in topics %}
-<<<<<<< HEAD
+
 
             <a href="{% url 'Main:topic' topic.id %}">{{ topic }}</a>
-=======
-        <a href="{% url 'Main:topic' topic.id %}">{{ topic }}</a>
->>>>>>> db013161928a3e22f1e97aa0908af4ca8cf9ef99
+
 
     {% empty %}
         <li>Dont have topics yet</li>
     {% endfor %}
-<<<<<<< HEAD
 
-=======
     <a href="{% url 'Main:new_topic' %}">Add new topic</a>
 </ul>
->>>>>>> db013161928a3e22f1e97aa0908af4ca8cf9ef99
+
 
 {% endblock %}

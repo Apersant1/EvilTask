@@ -39,4 +39,3 @@ def create_topic(request):
             form.save()
             return HttpResponseRedirect(reverse('Main:topics'))
     return render(request, 'new_topic.html', context={'form':form})
->>>>>>> db013161928a3e22f1e97aa0908af4ca8cf9ef99
