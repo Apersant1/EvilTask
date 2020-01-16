@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<<<<<<< HEAD
 
     <p>Topic: {{ topic }} </p>
 
@@ -17,4 +18,28 @@
     {% endfor %}
 
     </ul>
+=======
+    <p>Topic: {{ topic }}</p>
+
+    <P>Entries: </P>
+
+    {% for entry in entries %}
+
+        <div class="card">
+  <div class="card-header">
+    Тема
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>{{ entry.text|linebreaks }}</p>
+      <footer class="blockquote-footer">Опубликовано: {{ entry.data_added|date:'M d, Y H:i'}}</footer>
+    </blockquote>
+  </div>
+</div>
+        {% empty %}
+            <li>There are no entries for this topic yet.</li>
+
+    {% endfor %}
+
+>>>>>>> db013161928a3e22f1e97aa0908af4ca8cf9ef99
 {% endblock %}
