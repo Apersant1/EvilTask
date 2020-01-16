@@ -4,12 +4,12 @@
 {% block content %}
 <p>Topics:</p>
 
-<ul>
     {% for topic in topics %}
-        <li>{{ topic }}</li>
+
+            <a href="{% url 'Main:topic' topic.id %}">{{ topic }}</a>
+
     {% empty %}
     {% endfor %}
 
-</ul>
 
 {% endblock %}
