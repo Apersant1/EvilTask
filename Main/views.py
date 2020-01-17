@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import Topic
+from .models import Entry
 from .forms import TopicForm
 from .forms import EntryForm
 # Create your views here.
@@ -54,3 +55,17 @@ def create_entry(request, topic_id):
 
     return render(request, 'new_entry.html', context={'topic': topic, 'form': form})
 
+def edit_entry(request, entry_id):
+    """Редактирование записей"""
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
+
+    if request.method != 'POST':
+        form = EntryForm(instance=entry)
+    else:
+        form = EntryForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('Main:topic', args=[topic.id]))
+
+    return render(request, 'edit_entry.html', context={'entry': entry, 'topic': topic, 'form': form})
